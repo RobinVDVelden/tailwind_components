@@ -29,7 +29,7 @@ Flutter components based on Tailwind CSS.
 
 Here are some examples how to use some of the components
 
-###Colors
+Colors
 
 ```dart
 TWColors.red_600;
@@ -37,7 +37,7 @@ TWColors.indigo_600;
 TWColors.emerald_400;
 ```
 
-###InputField
+InputField
 
 ```dart
 Form(

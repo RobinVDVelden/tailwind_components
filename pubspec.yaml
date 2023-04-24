@@ -1,10 +1,10 @@
 name: tailwind_components
 description: Flutter components based on Tailwind CSS.
 version: 0.0.1
-homepage: https://RobinvdVelden@bitbucket.org/rvapplications/tailwind-components.git
+homepage: https://github.com/RobinVDVelden/tailwind_components.git
 
 environment:
-  sdk: '>=3.0.0-387.0.dev <4.0.0'
+  sdk: ">=2.17.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
-  RoundedButton({
+  const RoundedButton({
     required this.iconData,
     this.gradient,
     this.color,
@@ -20,13 +20,19 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: new Material(
-        child: new InkWell(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: gradient,
+        color: color,
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
           borderRadius: BorderRadius.circular(100.0),
           onTap: onTap,
           onLongPress: onLongPress,
-          child: new Container(
-            decoration: BoxDecoration(
+          child: Container(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
             height: size,
@@ -36,12 +42,6 @@ class RoundedButton extends StatelessWidget {
             ),
           ),
         ),
-        color: Colors.transparent,
-      ),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        gradient: gradient,
-        color: color,
       ),
     );
   }

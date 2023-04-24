@@ -138,7 +138,7 @@ class InputFieldState extends State<InputField> {
                 borderRadius: BorderRadius.circular(6)
             ),
             hintText: widget.placeholder,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
                 fontSize: 14,
                 color: TWColors.gray_500
             ),

@@ -19,7 +19,7 @@ class GradientButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
@@ -34,9 +34,9 @@ class GradientButton extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(radius ?? 3.0)),
           ),
           child: Container(
-            constraints: BoxConstraints(minWidth: 88.0, minHeight: 36.0),
+            constraints: const BoxConstraints(minWidth: 88.0, minHeight: 36.0),
             alignment: Alignment.center,
-            child: this.child,
+            child: child,
           ),
         ),
       ),
