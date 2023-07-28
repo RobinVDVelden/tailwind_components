@@ -20,10 +20,12 @@ Flutter components based on Tailwind CSS.
 | `TWColors` Library                               |   ✔️   |
 | `Input Field` Widget                             |   ✔️   |
 | `Validators` Library                             |   ✔️   |
-| `TaskCard` Library                               |   ✔️   |
-| `RoundedButton` Library                          |   ✔️   |
-| `GradientButton` Library                         |   ✔️   |
-| `SpaceCol` Library                               |   ✔️   |
+| `TaskCard` Widget                                |   ✔️   |
+| `RoundedButton` Widget                           |   ✔️   |
+| `GradientButton` Widget                          |   ✔️   |
+| `SpaceCol` Widget                                |   ✔️   |
+| `TWWrapper` Widget                               |   ✔️   |
+| `Modal` Function                                 |   ✔️   |
 
 ## Usage
 

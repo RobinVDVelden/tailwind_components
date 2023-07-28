@@ -7,6 +7,7 @@ class RoundedButton extends StatelessWidget {
     this.color,
     this.onLongPress,
     this.onTap,
+    this.iconColor,
     required this.size,
   });
 
@@ -16,6 +17,7 @@ class RoundedButton extends StatelessWidget {
   final VoidCallback? onLongPress;
   final VoidCallback? onTap;
   final double size;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class RoundedButton extends StatelessWidget {
             height: size,
             width: size,
             child: Center(
-              child: Icon(iconData, size: size * 0.6, color: Colors.white)
+              child: Icon(iconData, size: size * 0.6, color: iconColor ?? Colors.black)
             ),
           ),
         ),

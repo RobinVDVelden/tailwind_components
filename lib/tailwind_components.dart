@@ -12,3 +12,5 @@ export 'src/gradient_button.dart';
 export 'src/rounded_button.dart';
 export 'src/task_card.dart';
 export 'src/validators.dart';
+export 'src/tw_wrapper.dart';
+export 'src/modal.dart';
