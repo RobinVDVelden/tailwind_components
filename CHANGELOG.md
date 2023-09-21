@@ -22,3 +22,7 @@
 ## 0.0.39
 
 * Custom icon color in RoundedButton
+
+## 0.0.40
+
+* Added focusnode to InputField
