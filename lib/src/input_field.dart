@@ -105,65 +105,60 @@ class InputFieldState extends State<InputField> {
         SizedBox(height: widget.label != null ? 5 : 0),
         SizedBox(
           width: widget.fieldWidth,
-          child: Theme(
-            data: ThemeData(
-              primaryColor: widget.color
+          child: TextFormField(
+            focusNode: widget.focusNode,
+            textAlign: widget.textAlign ?? TextAlign.start,
+            initialValue: widget.value,
+            onTap: widget.onTap,
+            readOnly: widget.readOnly ?? false,
+            onChanged: widget.onChanged,
+            autofocus: widget.autofocus ?? false,
+            autocorrect: widget.autocorrect ?? false,
+            obscureText: widget.obscureText ?? false,
+            onEditingComplete: widget.onEditingComplete,
+            textAlignVertical: TextAlignVertical.bottom,
+            keyboardType: widget.keyboardType ?? TextInputType.text,
+            controller: widget.controller,
+            textCapitalization: widget.textCapitalization ?? TextCapitalization.sentences,
+            style: const TextStyle(
+              fontSize: 15,
             ),
-            child: TextFormField(
-              focusNode: widget.focusNode,
-              textAlign: widget.textAlign ?? TextAlign.start,
-              initialValue: widget.value,
-              onTap: widget.onTap,
-              readOnly: widget.readOnly ?? false,
-              onChanged: widget.onChanged,
-              autofocus: widget.autofocus ?? false,
-              autocorrect: widget.autocorrect ?? false,
-              obscureText: widget.obscureText ?? false,
-              onEditingComplete: widget.onEditingComplete,
-              textAlignVertical: TextAlignVertical.bottom,
-              keyboardType: widget.keyboardType ?? TextInputType.text,
-              controller: widget.controller,
-              textCapitalization: widget.textCapitalization ?? TextCapitalization.sentences,
-              style: const TextStyle(
-                fontSize: 15,
+            validator: widget.validator ?? validate,
+            autovalidateMode: widget.autovalidateMode ?? AutovalidateMode.disabled,
+            decoration: InputDecoration(
+              errorText: null,
+              errorStyle: const TextStyle(
+                  fontSize: 0,
+                  color: TWColors.red_500,
+                  fontWeight: FontWeight.w400
               ),
-              validator: widget.validator ?? validate,
-              autovalidateMode: widget.autovalidateMode ?? AutovalidateMode.disabled,
-              decoration: InputDecoration(
-                errorText: null,
-                errorStyle: const TextStyle(
-                    fontSize: 0,
-                    color: TWColors.red_500,
-                    fontWeight: FontWeight.w400
-                ),
-                suffixIcon: widget.suffixIcon,
-                isDense: true,
-                contentPadding: const EdgeInsets.all(14),
-                border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: TWColors.gray_300,
-                    ),
-                    borderRadius: BorderRadius.circular(6)
-                ),
-                enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 1.2,
-                      color: TWColors.gray_300,
-                    ),
-                    borderRadius: BorderRadius.circular(6)
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      width: 2,
-                      color: widget.color ?? TWColors.indigo_500,
-                    ),
-                    borderRadius: BorderRadius.circular(6)
-                ),
-                hintText: widget.placeholder,
-                hintStyle: const TextStyle(
-                    fontSize: 14,
-                    color: TWColors.gray_500
-                ),
+              suffixIcon: widget.suffixIcon,
+              isDense: true,
+              contentPadding: const EdgeInsets.all(14),
+              border: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: TWColors.gray_300,
+                  ),
+                  borderRadius: BorderRadius.circular(6)
+              ),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1.2,
+                    color: TWColors.gray_300,
+                  ),
+                  borderRadius: BorderRadius.circular(6)
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 2,
+                    color: widget.color ?? TWColors.indigo_500,
+                  ),
+                  borderRadius: BorderRadius.circular(6)
+              ),
+              hintText: widget.placeholder,
+              hintStyle: const TextStyle(
+                  fontSize: 14,
+                  color: TWColors.gray_500
               ),
             ),
           ),
