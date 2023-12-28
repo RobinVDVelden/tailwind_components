@@ -26,3 +26,7 @@
 ## 0.0.41
 
 * Added focusnode to InputField
+
+## 0.0.43
+
+* Added SpaceCol, SpaceRow and AutoGrid
