@@ -6,8 +6,9 @@ class AutoGrid extends StatelessWidget {
   final List<Widget> children;
   final int amountCols;
   final double gap;
+  final EdgeInsets? padding;
 
-  AutoGrid({super.key, required this.children, required this.amountCols, required this.gap});
+  AutoGrid({super.key, required this.children, required this.amountCols, required this.gap, this.padding});
 
   List<List<Widget>> get separatedItems {
     List<List<Widget>> items = [];
@@ -47,6 +48,7 @@ class AutoGrid extends StatelessWidget {
       controller: _scrollController,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
+      padding: padding,
       itemCount: separatedItems.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
