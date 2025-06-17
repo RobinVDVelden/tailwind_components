@@ -14,3 +14,5 @@ export 'src/task_card.dart';
 export 'src/validators.dart';
 export 'src/tw_wrapper.dart';
 export 'src/modal.dart';
+export 'src/space_row.dart';
+export 'src/auto_grid.dart';

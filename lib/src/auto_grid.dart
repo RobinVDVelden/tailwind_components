@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AutoGrid extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController();
+  final ScrollController? scrollController;
   final List<Widget> children;
   final int amountCols;
   final double gap;
   final EdgeInsets? padding;
+  final ScrollPhysics? physics;
 
-  AutoGrid({super.key, required this.children, required this.amountCols, required this.gap, this.padding});
+  const AutoGrid({super.key, required this.children, required this.amountCols, required this.gap, this.padding, this.scrollController, this.physics});
 
   List<List<Widget>> get separatedItems {
     List<List<Widget>> items = [];
@@ -45,14 +46,15 @@ class AutoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      controller: _scrollController,
+      controller: scrollController,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       padding: padding,
+      physics: physics,
       itemCount: separatedItems.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.only(top: gap),
+          padding: EdgeInsets.only(top: index > 0 ? gap : 0),
           child: IntrinsicHeight(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -22,7 +22,7 @@ class SpaceRow extends StatelessWidget {
     return Row(
       mainAxisSize: mainAxisSize ?? MainAxisSize.min,
       mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
-      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.start,
+      crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
       children: items,
     );
   }

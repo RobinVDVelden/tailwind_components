@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
-  const RoundedButton({
+  const RoundedButton({super.key,
     required this.iconData,
     this.gradient,
     this.color,
     this.onLongPress,
     this.onTap,
+    this.onTapUp,
     this.iconColor,
     required this.size,
   });
@@ -16,6 +17,7 @@ class RoundedButton extends StatelessWidget {
   final Color? color;
   final VoidCallback? onLongPress;
   final VoidCallback? onTap;
+  final Function(TapUpDetails)? onTapUp;
   final double size;
   final Color? iconColor;
 
@@ -32,6 +34,7 @@ class RoundedButton extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(100.0),
           onTap: onTap,
+          onTapUp: onTapUp,
           onLongPress: onLongPress,
           child: Container(
             decoration: const BoxDecoration(
@@ -40,7 +43,7 @@ class RoundedButton extends StatelessWidget {
             height: size,
             width: size,
             child: Center(
-              child: Icon(iconData, size: size * 0.6, color: iconColor ?? Colors.black)
+                child: Icon(iconData, size: size * 0.6, color: iconColor ?? Colors.black)
             ),
           ),
         ),
