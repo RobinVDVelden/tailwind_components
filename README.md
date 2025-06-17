@@ -27,6 +27,7 @@ Flutter components based on Tailwind CSS.
 | `TWWrapper` Widget      |   ✔️   |
 | `Modal` Function        |   ✔️   |
 | `SpaceRow` Widget       |   ✔️   |
+| `AutoGrid` Widget       |   ✔️   |
 
 ## Usage
 
