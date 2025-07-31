@@ -1,11 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/robinvandervelden/Developer/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/robinvandervelden/Documents/GitHub/tailwind_components/tailwind_components"
+export "FLUTTER_APPLICATION_PATH=/Users/robinvandervelden/Packages/tailwind_components"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=0.0.1"
-export "FLUTTER_BUILD_NUMBER=0.0.1"
+export "FLUTTER_BUILD_NAME=0.0.51"
+export "FLUTTER_BUILD_NUMBER=0.0.51"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"

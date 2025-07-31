@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'tw_wrapper.dart';
+import '../tw_wrapper.dart';
 
 class Modal {
   static show(ModalData modalData) {

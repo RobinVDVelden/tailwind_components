@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'tw_colors.dart';
+import '../tw_colors.dart';
 
 class InputField extends StatefulWidget {
   final TextEditingController? controller;
