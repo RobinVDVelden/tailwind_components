@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:tailwind_components/src/toast/MaskedTextContainer.dart';
 import 'package:tailwind_components/src/tw_colors.dart';
 import 'toast_type.dart';
 
@@ -77,9 +76,7 @@ class _CustomToastState extends State<CustomToast>
   }
 
   void _measureTextWidth() {
-    // Use 80% of screen width as max width for text measurement
-    final maxWidth = MediaQuery.of(context).size.width * .75 - 50; // Subtract padding
-    
+    // First measure text without width constraint to get natural width
     final textSpan = TextSpan(
       text: widget.message,
       style: const TextStyle(
@@ -93,12 +90,22 @@ class _CustomToastState extends State<CustomToast>
     final textPainter = TextPainter(
       text: textSpan,
       textDirection: TextDirection.ltr,
-      maxLines: null, // Allow multiple lines
+      maxLines: null,
     );
     
-    textPainter.layout(maxWidth: maxWidth);
-    _textWidth = textPainter.width + 50; // Add padding space
-    _textHeight = textPainter.height + 10; // Add padding space
+    // Get natural width (without constraints)
+    textPainter.layout();
+    final naturalWidth = textPainter.width;
+    
+    // Calculate optimal width: natural width + padding, but max 70% of screen
+    final maxWidth = MediaQuery.of(context).size.width * 0.7;
+    final optimalWidth = (naturalWidth + 50).clamp(0.0, maxWidth);
+    
+    // Now measure with the optimal width to get final dimensions
+    textPainter.layout(maxWidth: optimalWidth - 50);
+    
+    _textWidth = optimalWidth-20;
+    _textHeight = textPainter.height + 10;
   }
 
   void _startAnimation() async {
@@ -211,10 +218,29 @@ class _CustomToastState extends State<CustomToast>
                             height: targetHeight,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 6, right: 8, top: 4),
-                              child: MaskedTextContainer(
-                                  width: 0,
-                                  maxTextWidth: MediaQuery.of(context).size.width*.7,
-                                  text: widget.message
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    left: 0,
+                                    top: 0,
+                                    child: SizedBox(
+                                      width: (targetWidth - 10).clamp(0.0, double.infinity), // Subtract left/right padding (14) + extra 10 from right
+                                      child: DefaultTextStyle(
+                                        style: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                        child: Text(
+                                          widget.message,
+                                          softWrap: true,
+                                          overflow: TextOverflow.clip,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           );
