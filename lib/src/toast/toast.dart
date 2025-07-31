@@ -18,7 +18,7 @@ class Toast {
 
   /// Show a custom toast message with optional type.
   /// Default type is info.
-  static void show(String message, [ToastType type = ToastType.info]) {
+  static void show(String message, {ToastType type = ToastType.info}) {
     // Remove existing toast if any
     _currentToast?.remove();
     

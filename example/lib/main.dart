@@ -42,7 +42,7 @@ class _BaseAppState extends State<BaseApp> {
           children: [
             ElevatedButton(
               child: Text('Toast'),
-              onPressed: () => Toast.show('This is a test message!'),
+              onPressed: () => Toast.show('This is a test message!', type: ToastType.success),
             )
           ],
         ),
