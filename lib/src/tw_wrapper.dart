@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'modal.dart';
+import 'modal/modal.dart';
 
 ValueNotifier<ModalData?> modalEvent = ValueNotifier(null);
 
