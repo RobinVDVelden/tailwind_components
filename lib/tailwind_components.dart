@@ -19,7 +19,6 @@ export 'src/tw_colors.dart';
 export 'src/components/input_field.dart';
 export 'src/components/gradient_app_bar.dart';
 export 'src/components/gradient_button.dart';
-export 'src/components/rounded_button.dart';
 export 'src/components/task_card.dart';
 export 'src/validators.dart';
 export 'src/components/auto_grid.dart';
