@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tailwind_components/src/toast/toast_chip.dart';
 import '../context_manager.dart';
-import 'toast_type.dart';
+import 'toast_type_enum.dart';
 
 /// Global toast instance for showing custom toast messages.
 /// 

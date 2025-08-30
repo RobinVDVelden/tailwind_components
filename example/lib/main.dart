@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tailwind_components/tailwind_components.dart';
+import 'package:tailwind_components_example/components/example_modal.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,22 @@ class BaseApp extends StatefulWidget {
 
 class _BaseAppState extends State<BaseApp> {
 
+  Future<void> showModal() async {
+    bool? result = await ExampleModal().show<bool>();
+
+    /// OR
+    /// bool result = await Modal.show<bool>(ExampleModal());
+  }
+
+  Future<void> showToast() async {
+    Toast.show('Success! ', type: ToastType.success);
+
+    /// OR
+    /// Toast.show('Info!', type: ToastType.info);
+    /// Toast.show('Warning!', type: ToastType.warning);
+    /// Toast.show('Error! ', type: ToastType.error);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,8 +58,13 @@ class _BaseAppState extends State<BaseApp> {
           spacing: 12,
           children: [
             ElevatedButton(
+              onPressed: showModal,
+              child: Text('Show modal'),
+            ),
+            
+            ElevatedButton(
+              onPressed: showToast,
               child: Text('Short toast'),
-              onPressed: () => Toast.show('Successfully! ', type: ToastType.info),
             ),
           ],
         ),

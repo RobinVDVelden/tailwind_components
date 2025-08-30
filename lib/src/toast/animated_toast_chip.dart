@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:tailwind_components/src/tw_colors.dart';
-import 'toast_type.dart';
+import 'toast_type_enum.dart';
 
 
 /// AnimatedToastChip
