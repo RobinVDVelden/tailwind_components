@@ -29,4 +29,4 @@ export 'src/components/space_row.dart';
 export 'src/components/auto_grid.dart';
 export 'src/toast/toast.dart';
 export 'src/toast/toast_type.dart';
-export 'src/toast/custom_toast.dart';
+export 'src/toast/animated_toast_chip.dart';

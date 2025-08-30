@@ -3,13 +3,17 @@ import 'package:heroicons/heroicons.dart';
 import 'package:tailwind_components/src/tw_colors.dart';
 import 'toast_type.dart';
 
-/// Custom toast widget with complex animations.
-class CustomToast extends StatefulWidget {
+
+/// AnimatedToastChip
+///
+/// Still work in progress. The animations work fine but width is not perfect.
+
+class AnimatedToastChip extends StatefulWidget {
   final String message;
   final ToastType type;
   final VoidCallback onDismiss;
 
-  const CustomToast({
+  const AnimatedToastChip({
     super.key,
     required this.message,
     required this.type,
@@ -17,10 +21,10 @@ class CustomToast extends StatefulWidget {
   });
 
   @override
-  State<CustomToast> createState() => _CustomToastState();
+  State<AnimatedToastChip> createState() => _AnimatedToastChipState();
 }
 
-class _CustomToastState extends State<CustomToast>
+class _AnimatedToastChipState extends State<AnimatedToastChip>
     with TickerProviderStateMixin {
   late AnimationController _mainController;
   
@@ -100,11 +104,11 @@ class _CustomToastState extends State<CustomToast>
     // Calculate optimal width: natural width + padding, but max 70% of screen
     final maxWidth = MediaQuery.of(context).size.width * 0.7;
     final optimalWidth = (naturalWidth + 50).clamp(0.0, maxWidth);
-    
+
     // Now measure with the optimal width to get final dimensions
     textPainter.layout(maxWidth: optimalWidth - 50);
     
-    _textWidth = optimalWidth-20;
+    _textWidth = optimalWidth-25;
     _textHeight = textPainter.height + 10;
   }
 

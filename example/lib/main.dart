@@ -41,9 +41,9 @@ class _BaseAppState extends State<BaseApp> {
           spacing: 12,
           children: [
             ElevatedButton(
-              child: Text('Toast with a very long message'),
-              onPressed: () => Toast.show('Successfully! asojd fiojas dfjoa sdijf asdfjasdfjo ', type: ToastType.success),
-            )
+              child: Text('Short toast'),
+              onPressed: () => Toast.show('Successfully! ', type: ToastType.info),
+            ),
           ],
         ),
       ),

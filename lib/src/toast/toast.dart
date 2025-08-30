@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tailwind_components/src/toast/toast_chip.dart';
 import '../context_manager.dart';
-import 'custom_toast.dart';
 import 'toast_type.dart';
 
 /// Global toast instance for showing custom toast messages.
@@ -32,7 +32,7 @@ class Toast {
         bottom: 0,
         left: 0,
         right: 0,
-        child: CustomToast(
+        child: ToastChip(
           message: message,
           type: type,
           onDismiss: () {
