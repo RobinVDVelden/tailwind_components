@@ -26,6 +26,10 @@ export 'src/toast/toast.dart';
 export 'src/toast/toast_type_enum.dart';
 export 'src/toast/animated_toast_chip.dart';
 
+/// Spacing Row & Column (Removed soon because flutter has this now)
+export 'src/components/space_col.dart';
+export 'src/components/space_row.dart';
+
 /// Modals
 export 'src/modal/modal.dart';
 export 'src/modal/modal_handler.dart';
