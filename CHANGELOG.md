@@ -1,3 +1,10 @@
+## 1.0.0
+
+* First official release of the package.
+* Deprecated SpaceCol & SpaceRow since default Column and Row now support 'spacing'.
+* Added ModalHandler to easily handle modals.
+* Added Toast to easily show toasts with different types.
+
 ## 0.0.51
 
 * Removed top padding when using Gap in AutoGrid
