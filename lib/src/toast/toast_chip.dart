@@ -182,8 +182,7 @@ class _ToastChipState extends State<ToastChip>
                     vertical: 5
                   ),
                   decoration: BoxDecoration(
-                    // color: Theme.of(context).colorScheme.surface,
-                    color: Theme.of(context).brightness == Brightness.dark ? const Color(0xff222222) : Colors.white,
+                    color: Theme.of(context).snackBarTheme.backgroundColor ?? (Theme.of(context).brightness == Brightness.dark ? const Color(0xff222222) : Colors.white),
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(

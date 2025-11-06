@@ -1,92 +1,112 @@
 import 'package:flutter/material.dart';
-import 'package:tailwind_components/src/theme.dart';
 import 'context_manager.dart';
 
 /// A wrapper widget that automatically initializes TailwindComponents.
 /// 
-/// Wrap your MaterialApp with this widget to enable all TailwindComponents features:
+/// Wrap your MaterialApp with this widget to enable all TailwindComponents features.
+/// The theme from your MaterialApp will be automatically used:
 /// ```dart
 /// TailwindComponents(
 ///   child: MaterialApp(
+///     theme: ThemeData(...),
+///     darkTheme: ThemeData.dark(...),
 ///     home: MyHomePage(),
 ///   ),
 /// )
 /// ```
-class TailwindComponents extends StatefulWidget {
-  final TailwindTheme theme;
+class TailwindComponents extends StatelessWidget {
   final Widget child;
-  static _TailwindComponentsState? _currentState;
 
   const TailwindComponents({
     super.key,
     required this.child,
-    TailwindTheme? theme,
-  }) : theme = theme ?? const TailwindTheme();
+  });
 
-  @override
-  State<TailwindComponents> createState() => _TailwindComponentsState();
-
-  /// Set the brightness of the theme at runtime.
-  static void setBrightness(Brightness brightness) {
-    final state = _currentState;
-    if (state != null) {
-      state._setBrightness(brightness);
-    } else {
-      throw Exception('TailwindComponents must be initialized before calling setBrightness');
-    }
-  }
-}
-
-class _TailwindComponentsState extends State<TailwindComponents> {
-  late Brightness _currentBrightness;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _currentBrightness = widget.theme.darkMode ? Brightness.dark : Brightness.light;
-
-    // Register this state instance
-    TailwindComponents._currentState = this;
+  Widget Function(BuildContext, Widget?)? _createBuilder(MaterialApp app) {
+    final originalBuilder = app.builder;
+    
+    return (context, childWidget) {
+      ContextManager.init(context);
+      return originalBuilder?.call(context, childWidget) ?? childWidget ?? const SizedBox.shrink();
+    };
   }
 
-  @override
-  void dispose() {
-    // Clear the state reference when disposed
-    if (TailwindComponents._currentState == this) {
-      TailwindComponents._currentState = null;
+  MaterialApp _copyMaterialAppWithBuilder(MaterialApp app) {
+    final builder = _createBuilder(app);
+    
+    if (app.routerConfig != null) {
+      return MaterialApp.router(
+        key: app.key,
+        routerConfig: app.routerConfig,
+        scaffoldMessengerKey: app.scaffoldMessengerKey,
+        builder: builder,
+        title: app.title,
+        onGenerateTitle: app.onGenerateTitle,
+        color: app.color,
+        theme: app.theme,
+        darkTheme: app.darkTheme,
+        highContrastTheme: app.highContrastTheme,
+        highContrastDarkTheme: app.highContrastDarkTheme,
+        themeMode: app.themeMode,
+        locale: app.locale,
+        localizationsDelegates: app.localizationsDelegates,
+        supportedLocales: app.supportedLocales,
+        debugShowMaterialGrid: app.debugShowMaterialGrid,
+        showPerformanceOverlay: app.showPerformanceOverlay,
+        checkerboardRasterCacheImages: app.checkerboardRasterCacheImages,
+        checkerboardOffscreenLayers: app.checkerboardOffscreenLayers,
+        showSemanticsDebugger: app.showSemanticsDebugger,
+        debugShowCheckedModeBanner: app.debugShowCheckedModeBanner,
+        shortcuts: app.shortcuts,
+        actions: app.actions,
+        restorationScopeId: app.restorationScopeId,
+        scrollBehavior: app.scrollBehavior,
+        useInheritedMediaQuery: app.useInheritedMediaQuery,
+      );
     }
     
-    super.dispose();
-  }
-
-  void _setBrightness(Brightness brightness) {
-    if (_currentBrightness != brightness) {
-      setState(() {
-        _currentBrightness = brightness;
-      });
-    }
+    return MaterialApp(
+      key: app.key,
+      navigatorKey: app.navigatorKey ?? ContextManager.navigatorKey,
+      scaffoldMessengerKey: app.scaffoldMessengerKey,
+      home: app.home,
+      routes: app.routes ?? const <String, WidgetBuilder>{},
+      initialRoute: app.initialRoute,
+      onGenerateRoute: app.onGenerateRoute,
+      onGenerateInitialRoutes: app.onGenerateInitialRoutes,
+      onUnknownRoute: app.onUnknownRoute,
+      navigatorObservers: app.navigatorObservers ?? const [],
+      builder: builder,
+      title: app.title,
+      onGenerateTitle: app.onGenerateTitle,
+      color: app.color,
+      theme: app.theme,
+      darkTheme: app.darkTheme,
+      highContrastTheme: app.highContrastTheme,
+      highContrastDarkTheme: app.highContrastDarkTheme,
+      themeMode: app.themeMode,
+      locale: app.locale,
+      localizationsDelegates: app.localizationsDelegates,
+      supportedLocales: app.supportedLocales,
+      debugShowMaterialGrid: app.debugShowMaterialGrid,
+      showPerformanceOverlay: app.showPerformanceOverlay,
+      checkerboardRasterCacheImages: app.checkerboardRasterCacheImages,
+      checkerboardOffscreenLayers: app.checkerboardOffscreenLayers,
+      showSemanticsDebugger: app.showSemanticsDebugger,
+      debugShowCheckedModeBanner: app.debugShowCheckedModeBanner,
+      shortcuts: app.shortcuts,
+      actions: app.actions,
+      restorationScopeId: app.restorationScopeId,
+      scrollBehavior: app.scrollBehavior,
+      useInheritedMediaQuery: app.useInheritedMediaQuery,
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: ContextManager.navigatorKey,
-      theme: ThemeData(
-        brightness: _currentBrightness,
-      ),
-      home: Stack(
-        children: [
-          widget.child,
-
-          /// TODO, add overlays like modals, popups etc.
-        ],
-      ),
-      builder: (context, child) {
-        ContextManager.init(context);
-        
-        return child!;
-      },
-    );
+    if (child is MaterialApp) {
+      return _copyMaterialAppWithBuilder(child as MaterialApp);
+    }
+    return child;
   }
 } 

@@ -31,7 +31,7 @@ class TWModal extends StatelessWidget {
   }) : assert(!(body != null && expandedBody != null),
             'Only one of body or expandedBody can be provided');
 
-  Widget get _headerWidget {
+  Widget _headerWidget(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(
         top: 5,
@@ -53,8 +53,8 @@ class TWModal extends StatelessWidget {
                   : MainAxisAlignment.start,
               children: [
                 DefaultTextStyle(
-                  style: const TextStyle(
-                    color: Colors.black,
+                  style: TextStyle(
+                    color: Theme.of(context).textTheme.titleLarge?.color ?? (Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     overflow: TextOverflow.ellipsis,
@@ -109,7 +109,7 @@ class TWModal extends StatelessWidget {
                     )
                   : null,
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).dialogTheme.backgroundColor ?? (Theme.of(context).brightness == Brightness.dark ? const Color(0xff222222) : Colors.white),
                   border: Border.all(color: Colors.white.withValues(alpha: .1)),
                   boxShadow: const [
                     BoxShadow(
@@ -124,7 +124,7 @@ class TWModal extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title != null || actions != null || leading != null) _headerWidget,
+                  if (title != null || actions != null || leading != null) _headerWidget(context),
 
                   if (body != null)
                     Flexible(

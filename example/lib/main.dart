@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TailwindComponents(
-      theme: TailwindTheme(darkMode: true),
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -115,32 +114,6 @@ class _BaseAppState extends State<BaseApp> {
             ),
         
             const SizedBox(height: 30),
-
-            Text(
-              'Set Brightness',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 12,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    TailwindComponents.setBrightness(Brightness.dark);
-                  },
-                  child: Text('Set dark mode'),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    TailwindComponents.setBrightness(Brightness.light);
-                  },
-                  child: Text('Set light mode'),
-                ),
-              ],
-            ),
           ],
         ),
       ),
