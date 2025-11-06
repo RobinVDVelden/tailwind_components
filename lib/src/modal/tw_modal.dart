@@ -111,12 +111,12 @@ class TWModal extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Theme.of(context).dialogTheme.backgroundColor ?? (Theme.of(context).brightness == Brightness.dark ? const Color(0xff222222) : Colors.white),
                   border: Border.all(color: Colors.white.withValues(alpha: .1)),
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                      color: Colors.black38,
-                      spreadRadius: 8,
-                      blurRadius: 12,
-                      offset: Offset(0, 0),
+                      color: Colors.black.withValues(alpha: .2),
+                      spreadRadius: 4,
+                      blurRadius: 8,
+                      offset: const Offset(0, 0),
                     ),
                   ],
                   borderRadius: const BorderRadius.all(Radius.circular(10))),

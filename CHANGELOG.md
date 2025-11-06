@@ -1,6 +1,6 @@
 ## 1.0.1
 
-* Added dark theme setting mainly for Toasts
+* Package respects flutter theme now
 
 ## 1.0.0
 
