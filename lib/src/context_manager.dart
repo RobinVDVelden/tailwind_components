@@ -1,29 +1,20 @@
 import 'package:flutter/material.dart';
 
-/// Global context manager for TailwindComponents package.
+/// Manages Navigator state for TailwindComponents.
 /// 
-/// Initialize this at the top level of your Flutter app:
-/// ```dart
-/// TailwindComponents.init(context);
-/// ```
+/// Uses a navigator key to access Navigator context for dialogs and overlays.
 class ContextManager {
   ContextManager._();
   
-  static BuildContext? _context;
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  // Internal navigator key for accessing Navigator state
+  static final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
 
-  /// Initialize the global context for the package.
-  /// Call this at the top level of your Flutter app.
-  static void init(BuildContext context) {
-    _context = context;
-  }
+  /// Returns the navigator key to be used with MaterialApp.
+  static GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
-  /// Get the global context.
-  /// Throws an exception if not initialized.
-  static BuildContext get context {
-    if (_context == null) {
-      throw Exception('TailwindComponents must be initialized at the top level of your Flutter app before using any components: TailwindComponents.init(context);');
-    }
-    return _context!;
+  /// Returns the NavigatorState from the navigator key.
+  /// Returns null if Navigator hasn't been built yet.
+  static NavigatorState? get navigatorState {
+    return _navigatorKey.currentState;
   }
 } 

@@ -30,7 +30,7 @@ Flutter components based on Tailwind CSS.
 
 **Installation**
 
-To use all the features of this package, please wrap your MaterialApp inside the **TailwindComponents** widget.
+To use all the features of this package, add the navigator key of TailwindComponents to your MaterialApp:
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -38,13 +38,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TailwindComponents( // <--- This is where you put the wrapper.
-      child: MaterialApp(
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
-        home: const BaseApp(),
+    return MaterialApp(
+      navigatorKey: TailwindComponents.navigatorKey, // <--- Add the navigatorKey of TailwindComponents
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      home: const BaseApp(),
     );
   }
 }

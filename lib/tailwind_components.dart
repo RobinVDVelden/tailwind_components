@@ -4,14 +4,16 @@ library tailwind_components;
 ///
 /// To use, import `package:tailwind_components/tailwind_components.dart`.
 /// 
-/// Wrap your MaterialApp with TailwindComponents to initialize the package:
+/// **Setup** - Just add the navigatorKey to your MaterialApp:
 /// ```dart
-/// TailwindComponents(
-///   child: MaterialApp(
-///     home: MyHomePage(),
-///   ),
+/// MaterialApp(
+///   navigatorKey: TailwindComponents.navigatorKey,
+///   theme: ThemeData(...),
+///   home: MyHomePage(),
 /// )
 /// ```
+/// 
+/// That's it! Modals and toasts will work from anywhere in your app.
 
 export 'src/context_manager.dart';
 export 'src/wrapper.dart';

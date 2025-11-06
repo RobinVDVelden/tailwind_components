@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Improved setup to support alternative MaterialApp implementations such as GetMaterialApp (GetX) for broader compatibility.
+
 ## 1.0.2
 
 * Updated README
