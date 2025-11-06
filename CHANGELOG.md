@@ -1,3 +1,11 @@
+## 1.0.0
+
+* First official release of the package.
+* Deprecated SpaceCol & SpaceRow since default Column and Row now support 'spacing'.
+* Added ModalHandler to easily handle modals.
+* Added Toast to easily show toasts with different types.
+* Removed the RoundedButton widget since Flutter now has a proper looking IconButton widget.
+
 ## 0.0.51
 
 * Removed top padding when using Gap in AutoGrid

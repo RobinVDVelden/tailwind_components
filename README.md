@@ -18,16 +18,13 @@ Flutter components based on Tailwind CSS.
 | Features                | Status |
 |-------------------------| :----: |
 | `TWColors` Library      |   ✔️   |
-| `Input Field` Widget    |   ✔️   |
 | `Validators` Library    |   ✔️   |
+| `Input Field` Widget    |   ✔️   |
 | `TaskCard` Widget       |   ✔️   |
-| `RoundedButton` Widget  |   ✔️   |
 | `GradientButton` Widget |   ✔️   |
-| `SpaceCol` Widget       |   ✔️   |
-| `TWWrapper` Widget      |   ✔️   |
-| `Modal` Function        |   ✔️   |
-| `SpaceRow` Widget       |   ✔️   |
 | `AutoGrid` Widget       |   ✔️   |
+| `Modal` Functions       |   ✔️   |
+| `Toast` Functions       |   ✔️   |
 
 ## Usage
 
@@ -61,24 +58,6 @@ Form(
 ),
 ```
 
-**SpaceCol**
-
-```dart
-SpaceCol(
-    spaceBetween: 10,
-    children: [],
-),
-```
-
-**SpaceRow**
-
-```dart
-SpaceRow(
-    spaceBetween: 10,
-    children: [],
-),
-```
-
 **AutoGrid**
 Automatically creates a grid with a specific amount of columns. All columns extent their height to the largest of the row.
 
@@ -89,6 +68,65 @@ AutoGrid(
     children: [],
 ),
 ```
+
+**Show Toasts**
+
+```dart
+Toast.show('Success! ', type: ToastType.success);
+Toast.show('Info!', type: ToastType.info);
+Toast.show('Warning!', type: ToastType.warning);
+Toast.show('Error! ', type: ToastType.error);
+```
+
+**Manage Modals**
+
+You can create a Modal widget class that extends **ModalHandler**. This will grand you a variety of functions to manage the modal.
+
+```dart
+// Show the modal from anywhere within your flutter application
+bool? result = await ExampleModal().show<bool>();
+
+
+// Create the modal class
+class ExampleModal extends ModalHandler {
+  const ExampleModal({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TWModal(
+      maxWidth: 350,
+
+      title: const Text('Example Modal'),
+      actions: [
+        IconButton(
+          onPressed: close,
+          icon: Icon(Icons.close, size: 16),
+        ),
+      ],
+
+      body: Text('Close() function is available with a result parameter within ModalHandler.'),
+
+      footer: Row(
+        spacing: 12,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          TextButton(
+            child: const Text('Cancel'),
+            onPressed: () => close(),
+          ),
+
+          ElevatedButton(
+            child: const Text('Submit'),
+            onPressed: () => close(result: true),
+          ),
+        ],
+      ),
+    );
+  }
+}
+```
+
+
 
 
 
