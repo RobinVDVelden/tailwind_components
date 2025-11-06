@@ -1,6 +1,6 @@
 name: tailwind_components
 description: Flutter components based on Tailwind CSS.
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/RobinVDVelden/tailwind_components.git
 
 environment:

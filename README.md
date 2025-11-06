@@ -39,7 +39,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TailwindComponents( // <--- This is where you put the wrapper.
-      theme: TailwindTheme(darkMode: false),
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
