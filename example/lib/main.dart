@@ -38,13 +38,21 @@ class _BaseAppState extends State<BaseApp> {
     /// bool result = await Modal.show<bool>(ExampleModal());
   }
 
-  Future<void> showToast() async {
+  Future<void> showShortSuccessToast() async {
     Toast.show('Success! ', type: ToastType.success);
 
     /// OR
     /// Toast.show('Info!', type: ToastType.info);
     /// Toast.show('Warning!', type: ToastType.warning);
     /// Toast.show('Error! ', type: ToastType.error);
+  }
+
+  Future<void> showLongSuccessToast() async {
+    Toast.show('Success! This Toast includes a long string for demonstration!', type: ToastType.success);
+  }
+
+  Future<void> showErrorToast() async {
+    Toast.show('Error! ', type: ToastType.error);
   }
 
   @override
@@ -54,18 +62,44 @@ class _BaseAppState extends State<BaseApp> {
         title: Text('Tailwind Components'),
       ),
       body: Center(
-        child: Wrap(
-          spacing: 12,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: showModal,
-              child: Text('Show modal'),
+            Text('Modals'),
+            Wrap(
+              spacing: 12,
+              children: [
+                ElevatedButton(
+                  onPressed: showModal,
+                  child: Text('Show modal'),
+                ),
+              ],
             ),
-            
-            ElevatedButton(
-              onPressed: showToast,
-              child: Text('Short toast'),
+        
+            const SizedBox(height: 30),
+        
+            Text('Toasts'),
+            Wrap(
+              spacing: 12,
+              children: [
+                ElevatedButton(
+                  onPressed: showShortSuccessToast,
+                  child: Text('Short success toast'),
+                ),
+        
+                ElevatedButton(
+                  onPressed: showLongSuccessToast,
+                  child: Text('Long success toast'),
+                ),
+        
+                ElevatedButton(
+                  onPressed: showErrorToast,
+                  child: Text('Error toast'),
+                ),
+              ],
             ),
+        
+            const SizedBox(height: 30),
           ],
         ),
       ),

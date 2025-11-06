@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+@Deprecated('This component is no longer needed because Flutter\'s Column now has a spacing property. Use [Column] instead.')
 class SpaceCol extends StatelessWidget {
   final double? spaceBetween;
   final List<Widget> children;
