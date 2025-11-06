@@ -28,6 +28,30 @@ Flutter components based on Tailwind CSS.
 
 ## Usage
 
+**Installation**
+
+To use all the features of this package, please wrap your MaterialApp inside the **TailwindComponents** widget.
+
+```dart
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TailwindComponents( // <--- This is where you put the wrapper.
+      theme: TailwindTheme(darkMode: false),
+      child: MaterialApp(
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        ),
+        home: const BaseApp(),
+      ),
+    );
+  }
+}
+```
+
+
 Here are some examples how to use some of the components
 
 **Colors**

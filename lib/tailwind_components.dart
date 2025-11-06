@@ -15,6 +15,8 @@ library tailwind_components;
 
 export 'src/context_manager.dart';
 export 'src/wrapper.dart';
+export 'src/theme.dart';
+
 export 'src/tw_colors.dart';
 export 'src/components/input_field.dart';
 export 'src/components/gradient_app_bar.dart';

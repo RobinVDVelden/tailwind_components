@@ -148,9 +148,9 @@ class _ToastChipState extends State<ToastChip>
       case ToastType.success:
         return HeroIcons.checkCircle;
       case ToastType.warning:
-        return HeroIcons.exclamationTriangle;
+        return HeroIcons.exclamationCircle;
       case ToastType.error:
-        return HeroIcons.exclamationTriangle;
+        return HeroIcons.exclamationCircle;
       case ToastType.info:
         return HeroIcons.informationCircle;
     }
@@ -182,13 +182,15 @@ class _ToastChipState extends State<ToastChip>
                     vertical: 5
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    // color: Theme.of(context).colorScheme.surface,
+                    color: Theme.of(context).brightness == Brightness.dark ? const Color(0xff222222) : Colors.white,
                     borderRadius: BorderRadius.circular(50),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 1),
-                        blurRadius: 8,
-                        offset: const Offset(0, -2),
+                        color: Theme.of(context).colorScheme.shadow.withValues(alpha: .2),
+                        blurRadius: 7,
+                        spreadRadius: 1,
+                        offset: const Offset(0, 0),
                       ),
                     ],
                   ),
@@ -212,8 +214,8 @@ class _ToastChipState extends State<ToastChip>
                         child: Padding(
                           padding: const EdgeInsets.only(left: 6, right: 12, top: 4, bottom: 4),
                           child: DefaultTextStyle(
-                            style: const TextStyle(
-                              color: Colors.black87,
+                            style: TextStyle(
+                              color: Theme.of(context).textTheme.bodyMedium?.color,
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.none,

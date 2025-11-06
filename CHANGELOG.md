@@ -1,3 +1,7 @@
+## 1.0.1
+
+* Added dark theme setting mainly for Toasts
+
 ## 1.0.0
 
 * First official release of the package.
