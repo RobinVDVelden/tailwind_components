@@ -131,7 +131,7 @@ class TWModal extends StatelessWidget {
                       child: SingleChildScrollView(
                         padding: const EdgeInsets.only(
                           top: 5,
-                          bottom: 30,
+                          bottom: 20,
                           left: 20,
                           right: 20,
                         ),
