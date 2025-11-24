@@ -8,12 +8,14 @@ class ToastChip extends StatefulWidget {
   final String message;
   final ToastType type;
   final VoidCallback onDismiss;
+  final Duration duration;
 
   const ToastChip({
     super.key,
     required this.message,
     required this.type,
     required this.onDismiss,
+    required this.duration,
   });
 
   @override
@@ -22,6 +24,7 @@ class ToastChip extends StatefulWidget {
 
 class _ToastChipState extends State<ToastChip>
     with TickerProviderStateMixin {
+
   late AnimationController _mainController;
   
   // Main animation: icon flying up and down
@@ -33,7 +36,6 @@ class _ToastChipState extends State<ToastChip>
   
   // Text width measurement
   double? _textWidth;
-  double? _textHeight;
 
   @override
   void initState() {
@@ -105,15 +107,14 @@ class _ToastChipState extends State<ToastChip>
     textPainter.layout(maxWidth: optimalWidth - 50);
     
     _textWidth = optimalWidth-25;
-    _textHeight = textPainter.height + 10;
   }
 
   void _startAnimation() async {
     // Start main animation
     _mainController.forward();
     
-    // Wait 3 seconds, then reverse everything
-    await Future.delayed(const Duration(seconds: 3));
+    // Wait for the specified duration, then reverse everything
+    await Future.delayed(widget.duration);
     
     if (mounted) {
       _mainController.reverse();

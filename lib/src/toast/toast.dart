@@ -21,7 +21,7 @@ class Toast {
   /// 
   /// If a toast is already showing, it will be replaced.
   /// Default type is [ToastType.info].
-  static void show(String message, {ToastType type = ToastType.info}) {
+  static void show(String message, {ToastType type = ToastType.info, Duration? duration}) {
     // Remove existing toast if any
     _currentToast?.remove();
     
@@ -39,6 +39,7 @@ class Toast {
           child: ToastChip(
             message: message,
             type: type,
+            duration: duration ?? const Duration(seconds: 3),
             onDismiss: () {
               _currentToast?.remove();
               _currentToast = null;
