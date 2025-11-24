@@ -4,6 +4,7 @@ class TWModal extends StatelessWidget {
   final double? maxWidth;
   final double? maxHeight;
   final double verticalInsetsPadding;
+  final double horizontalInsetsPadding;
 
   /// Header
   final Widget? title;
@@ -18,7 +19,8 @@ class TWModal extends StatelessWidget {
 
   const TWModal({
     this.maxWidth,
-    this.verticalInsetsPadding = 25,
+    this.verticalInsetsPadding = 24,
+    this.horizontalInsetsPadding = 24,
     this.maxHeight,
     this.body,
     this.footer,
@@ -95,8 +97,8 @@ class TWModal extends StatelessWidget {
 
           return Dialog(
             insetPadding: EdgeInsets.only(
-              left: 24,
-              right: 24,
+              left: horizontalInsetsPadding,
+              right: horizontalInsetsPadding,
               bottom: bottomPadding,
               top: topPadding,
             ),
@@ -141,9 +143,11 @@ class TWModal extends StatelessWidget {
                   if (expandedBody != null)
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 5,
+                        padding: const EdgeInsets.only(
+                          top: 5,
+                          bottom: 20,
+                          left: 20,
+                          right: 20,
                         ),
                         child: expandedBody,
                       ),
