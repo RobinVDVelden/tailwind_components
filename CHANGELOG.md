@@ -1,3 +1,8 @@
+## 1.0.4
+
+* Added duration parameter to Toast.show()
+* Added horizontalInsetsPadding parameter to TWModal widget.
+
 ## 1.0.3
 
 * Improved setup to support alternative MaterialApp implementations such as GetMaterialApp (GetX) for broader compatibility.
